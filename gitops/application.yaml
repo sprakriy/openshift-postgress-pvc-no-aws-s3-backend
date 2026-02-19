@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: project-lifecycle-manager
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/sprakriy/openshift-postgress-pvc-no-aws-s3-backend.git # Change this!
+    targetRevision: HEAD
+    path: k8s-manifests 
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: openshift-infra-automation
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
