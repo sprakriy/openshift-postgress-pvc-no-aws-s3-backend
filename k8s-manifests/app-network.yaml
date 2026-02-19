@@ -22,3 +22,4 @@ spec:
     name: guestbook-service
   port:
     targetPort: 80
+    # added a line to push this file again
